@@ -1,0 +1,2377 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fit India Life - Desi Health, Fit Life</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            tealAccent: '#0d9488'
+          },
+          borderRadius: {
+            'custom': '16px',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .dark .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #334155;
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-content, #printable-content * {
+        visibility: visible;
+      }
+      #printable-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    /* Wave animation for glass fill */
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .active-glass {
+      animation: pulseSoft 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200">
+
+  <!-- ================= TOP NOTIFICATION / MARQUEE ================= -->
+  <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-tealAccent text-white text-xs sm:text-sm py-1.5 px-4 text-center font-medium no-print flex items-center justify-center gap-2">
+    <span>🌿 100% Free & Open-Access Desi Health Portal</span>
+    <span class="hidden sm:inline">• Swasth Bharat Abhiyan</span>
+    <span class="hidden md:inline">• Asian BMI Standards & Low-GI Diet</span>
+  </div>
+
+  <!-- ================= HEADER & NAVIGATION ================= -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo & Tagline -->
+      <div class="flex items-center space-x-3">
+        <div class="w-11 h-11 rounded-custom bg-gradient-to-tr from-brand-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-heart-pulse text-2xl"></i>
+        </div>
+        <div>
+          <a href="#" class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+            Fit<span class="text-brand-600 dark:text-brand-500">India</span>Life
+            <span class="text-[10px] bg-brand-100 text-brand-800 dark:bg-brand-900/60 dark:text-brand-300 font-bold px-1.5 py-0.5 rounded-full uppercase">.in</span>
+          </a>
+          <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Desi Health, Fit Life.</p>
+        </div>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+        <a href="#trackers" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Trackers</a>
+        <a href="#diet" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Diet Plan</a>
+        <a href="#devices" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Devices</a>
+        <a href="#leaderboard" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Leaderboard</a>
+        <a href="#transformation" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Transformation</a>
+        <a href="#downloads" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Downloads</a>
+      </nav>
+
+      <!-- Action Utilities: Streak, Lang, Dark Mode -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        
+        <!-- FEATURE 3: Daily Streak Counter Badge -->
+        <div id="streakBadge" class="flex items-center space-x-1.5 bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 px-3 py-1.5 rounded-custom border border-amber-200 dark:border-amber-800/60 font-bold text-xs sm:text-sm shadow-sm" title="Har roz aao aur streak badhao!">
+          <span class="animate-bounce">🔥</span>
+          <span id="streakCount">1</span>
+          <span class="hidden xs:inline">Day Streak</span>
+        </div>
+
+        <!-- FEATURE 2: Hindi/English Toggle -->
+        <button id="langToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-custom text-xs font-bold border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition" aria-label="Toggle Language">
+          <i class="fa-solid fa-language text-brand-600"></i>
+          <span id="langLabel">हिंदी</span>
+        </button>
+
+        <!-- FEATURE 1: Dark Mode Toggle -->
+        <button id="themeToggleBtn" class="w-9 h-9 rounded-custom flex items-center justify-center border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition" aria-label="Toggle Dark Mode">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-custom text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 space-y-3 font-semibold text-sm">
+      <a href="#trackers" class="block py-1 hover:text-brand-600" onclick="toggleMobileMenu()">📊 Health Trackers</a>
+      <a href="#diet" class="block py-1 hover:text-brand-600" onclick="toggleMobileMenu()">🥗 Low-GI Diet Plan</a>
+      <a href="#devices" class="block py-1 hover:text-brand-600" onclick="toggleMobileMenu()">🩺 Healthcare Machines</a>
+      <a href="#leaderboard" class="block py-1 hover:text-brand-600" onclick="toggleMobileMenu()">🏆 Steps Leaderboard</a>
+      <a href="#transformation" class="block py-1 hover:text-brand-600" onclick="toggleMobileMenu()">📸 Photo Progress</a>
+      <a href="#downloads" class="block py-1 hover:text-brand-600" onclick="toggleMobileMenu()">📥 Free PDFs</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative overflow-hidden pt-8 pb-14 lg:py-16 bg-gradient-to-b from-brand-50/70 via-[#f8fafc] to-[#f8fafc] dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Hero Text & Quick Action CTAs -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs px-3.5 py-1.5 rounded-full font-bold">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Indian Metabolic Health Standard (Asian Cut-Offs)</span>
+          </div>
+
+          <h1 id="heroTitle" class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+            Desi Health, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">Smart Tracking</span>
+          </h1>
+
+          <p id="heroSubtitle" class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
+            Track hydration, daily steps, blood sugar, and Asian-standard BMI tailored for Indian bodies. Discover authentic low-glycemic desi meals and cultivate lifelong fitness without giving up your culture.
+          </p>
+
+          <!-- Primary CTAs & Social Share -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#trackers" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-custom shadow-lg shadow-brand-600/30 transition transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Start Tracking Free</span>
+            </a>
+
+            <!-- FEATURE 5: WhatsApp Share Button -->
+            <button onclick="shareOnWhatsApp()" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-3.5 rounded-custom shadow-md shadow-green-500/20 transition transform hover:-translate-y-0.5">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Dosto Ko Share Karo</span>
+            </button>
+
+            <!-- FEATURE 6: Print Meal Plan / Tracker -->
+            <button onclick="window.print()" class="inline-flex items-center gap-2 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-semibold px-5 py-3.5 rounded-custom hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+              <i class="fa-solid fa-print"></i>
+              <span>Print Plan</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-600"></i> No Login Needed</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-600"></i> 100% LocalStorage Privacy</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-brand-600"></i> ICMR / WHO Asian Cutoffs</span>
+          </div>
+        </div>
+
+        <!-- Hero Right Column: Tip Generator & Daily Reminder Cards -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <!-- FEATURE 4: Daily Health Tip Generator -->
+          <div class="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-custom p-6 card-shadow relative overflow-hidden">
+            <div class="absolute -top-4 -right-4 w-20 h-20 bg-brand-500/10 rounded-full blur-xl pointer-events-none"></div>
+            
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold tracking-wider uppercase text-brand-600 dark:text-brand-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-lightbulb"></i> Aaj Ka Desi Nuskha
+              </span>
+              <span id="tipCounter" class="text-xs text-slate-400 font-semibold">Tip 1 of 8</span>
+            </div>
+
+            <div class="min-h-[75px] flex items-center">
+              <p id="tipText" class="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-100 italic">
+                "Khane se 10 min pehle kacha salad (kheera, tamatar) khao - blood sugar spike 40% tak kam hoti hai!"
+              </p>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+              <span class="text-xs text-slate-500 dark:text-slate-400">Dr. Recommended Lifestyle Tip</span>
+              <button onclick="getNewTip()" class="inline-flex items-center gap-1.5 bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 hover:bg-brand-100 text-xs font-bold px-3 py-1.5 rounded-lg transition">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <span>Naya Tip Dikhao</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- FEATURE 8: Daily Reminder Card -->
+          <div class="bg-gradient-to-br from-teal-50 to-emerald-50 dark:from-slate-900 dark:to-slate-800/80 border border-teal-200/70 dark:border-slate-700 rounded-custom p-5 card-shadow">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold">
+                  <i class="fa-solid fa-bell"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100">Swasthya Daily Reminder</h4>
+                  <p class="text-xs text-slate-600 dark:text-slate-400">Auto alerts: 8 AM Pani, 1 PM Walk, 8 PM Dinner</p>
+                </div>
+              </div>
+              <span id="reminderStatusBadge" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Off</span>
+            </div>
+
+            <div class="mt-4 flex items-center gap-2.5">
+              <button id="enableNotificationBtn" onclick="toggleDailyReminder()" class="flex-1 bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold py-2.5 px-3 rounded-lg shadow-sm transition">
+                <i class="fa-solid fa-toggle-on mr-1"></i> Reminder ON Karo
+              </button>
+              <button onclick="sendTestNotification()" class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 text-xs font-bold py-2.5 px-3 rounded-lg transition">
+                <i class="fa-solid fa-paper-plane mr-1"></i> Test Karo
+              </button>
+            </div>
+            <p id="reminderFeedback" class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 italic text-center"></p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PRINTABLE MASTER CONTAINER ================= -->
+  <div id="printable-content">
+
+    <!-- ================= MODULE 1: INTERACTIVE TRACKER DASHBOARD ================= -->
+    <section id="trackers" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Interactive Desi Health Trackers
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+          Monitor your water, daily steps, Asian BMI, and blood sugar with one-click Indian lifestyle calibration.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        
+        <!-- 1.1 WATER TRACKER (3000ml & 12 Glasses) -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                  <i class="fa-solid fa-droplet"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-base text-slate-900 dark:text-white">Water Intake Tracker</h3>
+                  <p class="text-xs text-slate-500">Daily Target: 3,000 ml (12 Glasses)</p>
+                </div>
+              </div>
+              <span id="waterPercentage" class="text-sm font-extrabold text-blue-600 dark:text-blue-400">0%</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mt-5">
+              <div class="flex justify-between text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
+                <span>Consumed: <strong id="currentWaterText" class="text-blue-600 dark:text-blue-400 text-sm">0</strong> ml</span>
+                <span>Goal: 3,000 ml</span>
+              </div>
+              <div class="w-full h-3.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+                <div id="waterProgressBar" class="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full transition-all duration-300" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- 12 Visual Glasses -->
+            <div class="mt-6">
+              <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-3 flex items-center justify-between">
+                <span>Click a glass or use +250ml:</span>
+                <span id="glassCountLabel" class="text-blue-600 dark:text-blue-400 font-bold">0 / 12 Glasses</span>
+              </p>
+              <div id="glassesGrid" class="grid grid-cols-6 gap-2 sm:gap-3 text-center">
+                <!-- Dynamically generated 12 glass elements -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Control Buttons -->
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
+            <button onclick="addWater(250)" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-sm shadow-md shadow-blue-500/20 transition">
+              <i class="fa-solid fa-plus mr-1"></i> +250 ml (1 Glass)
+            </button>
+            <button onclick="addWater(-250)" class="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold py-2.5 px-3 rounded-xl text-xs transition" title="Minus 250ml">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <button onclick="resetWater()" class="bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-bold py-2.5 px-3 rounded-xl text-xs transition" title="Reset Water">
+              <i class="fa-solid fa-rotate-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1.2 DAILY STEPS TRACKER -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center space-x-2.5">
+                <div class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                  <i class="fa-solid fa-person-walking"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-base text-slate-900 dark:text-white">Daily Steps Tracker</h3>
+                  <p class="text-xs text-slate-500">Goal: 10,000 Steps / Day</p>
+                </div>
+              </div>
+              <span id="stepGoalStatus" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-brand-700 dark:text-brand-300">Active</span>
+            </div>
+
+            <!-- Steps Input -->
+            <div class="mt-5">
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Enter Today's Steps:</label>
+              <div class="flex gap-2">
+                <input type="number" id="stepsInput" placeholder="e.g. 6500" min="0" class="flex-1 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <button onclick="updateSteps()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition">
+                  Save
+                </button>
+              </div>
+            </div>
+
+            <!-- Stats Metric Cards: KM, Calories, Steps Left -->
+            <div class="grid grid-cols-3 gap-2.5 mt-5">
+              <div class="bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800 p-3 rounded-xl text-center">
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Distance</span>
+                <p id="stepsKm" class="text-base font-extrabold text-brand-600 dark:text-brand-400 mt-0.5">0.00 km</p>
+                <span class="text-[9px] text-slate-400">steps × 0.00075</span>
+              </div>
+              <div class="bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800 p-3 rounded-xl text-center">
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Burned</span>
+                <p id="stepsCalories" class="text-base font-extrabold text-amber-600 dark:text-amber-400 mt-0.5">0 kcal</p>
+                <span class="text-[9px] text-slate-400">steps × 0.035</span>
+              </div>
+              <div class="bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800 p-3 rounded-xl text-center">
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Steps Left</span>
+                <p id="stepsLeft" class="text-base font-extrabold text-slate-800 dark:text-slate-100 mt-0.5">10,000</p>
+                <span class="text-[9px] text-slate-400">to 10k target</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 9 Connector Button: Copy to Leaderboard -->
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs text-slate-500">Showcase your step count:</span>
+            <button onclick="syncStepsToLeaderboardModal()" class="inline-flex items-center gap-1.5 bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/60 dark:hover:bg-brand-900/80 text-brand-700 dark:text-brand-300 font-bold text-xs px-3.5 py-2 rounded-xl transition">
+              <i class="fa-solid fa-trophy text-amber-500"></i>
+              <span>Leaderboard Me Add Karo</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1.3 ASIAN BMI CALCULATOR -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-weight-scale"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white">Asian BMI Calculator</h3>
+                <p class="text-xs text-slate-500">ICMR / WHO Asian Cut-Off Standards</p>
+              </div>
+            </div>
+            
+            <!-- Height Unit Toggle: cm vs ft/in -->
+            <div class="inline-flex rounded-lg border border-slate-300 dark:border-slate-700 p-0.5 bg-slate-100 dark:bg-slate-800 text-xs font-semibold">
+              <button id="unitCmBtn" onclick="setHeightUnit('cm')" class="px-2.5 py-1 rounded bg-white dark:bg-slate-700 text-brand-700 dark:text-brand-300 shadow-sm transition">cm</button>
+              <button id="unitFtBtn" onclick="setHeightUnit('ft')" class="px-2.5 py-1 rounded text-slate-600 dark:text-slate-400 transition">ft / in</button>
+            </div>
+          </div>
+
+          <!-- BMI Inputs Form -->
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Height Input Container -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Height:</label>
+              <!-- CM Input -->
+              <div id="cmInputGroup">
+                <div class="relative">
+                  <input type="number" id="heightCm" placeholder="e.g. 172" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                  <span class="absolute right-3 top-2 text-xs font-bold text-slate-400">cm</span>
+                </div>
+              </div>
+              <!-- FT & IN Input -->
+              <div id="ftInputGroup" class="hidden grid-cols-2 gap-2">
+                <div class="relative">
+                  <input type="number" id="heightFt" placeholder="Ft (e.g. 5)" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm outline-none">
+                  <span class="absolute right-2 top-2 text-xs text-slate-400">ft</span>
+                </div>
+                <div class="relative">
+                  <input type="number" id="heightIn" placeholder="In (e.g. 8)" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm outline-none">
+                  <span class="absolute right-2 top-2 text-xs text-slate-400">in</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weight Input Container -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Weight:</label>
+              <div class="relative">
+                <input type="number" id="weightKg" placeholder="e.g. 68" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                <span class="absolute right-3 top-2 text-xs font-bold text-slate-400">kg</span>
+              </div>
+            </div>
+
+          </div>
+
+          <button onclick="calculateBMI()" class="w-full mt-4 bg-brand-600 hover:bg-brand-700 text-white font-bold py-2.5 rounded-xl text-sm shadow-md shadow-brand-600/20 transition">
+            Calculate My Asian BMI
+          </button>
+
+          <!-- BMI Results Box -->
+          <div id="bmiResultBox" class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs font-medium text-slate-500">Your BMI Score:</span>
+                <div class="flex items-baseline gap-2 mt-0.5">
+                  <span id="bmiScoreText" class="text-2xl font-extrabold text-slate-900 dark:text-white">--</span>
+                  <span id="bmiBadge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Awaiting inputs</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] text-slate-500">Asian Normal Cutoff:</span>
+                <p class="text-xs font-bold text-brand-600 dark:text-brand-400">18.5 – 22.9 kg/m²</p>
+                <p id="idealWeightRange" class="text-[11px] text-slate-500 dark:text-slate-400">Ideal: -- kg</p>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-3 border-t border-slate-200/60 dark:border-slate-700 text-xs">
+              <strong class="text-slate-800 dark:text-slate-200">Desi Doctor Advice:</strong>
+              <p id="bmiDesiAdvice" class="text-slate-600 dark:text-slate-400 mt-0.5">
+                Indian bodies have higher body-fat percentage at lower BMIs. Keep BMI between 18.5 and 22.9 for minimum diabetes and heart risk.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1.4 BLOOD SUGAR LOG -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-9 h-9 rounded-xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-syringe"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-base text-slate-900 dark:text-white">Blood Sugar Log</h3>
+                <p class="text-xs text-slate-500">Track Fasting & Post-Prandial mg/dL</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-slate-400">mg/dL</span>
+          </div>
+
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Fasting (Khaali Pet):</label>
+              <input type="number" id="fastingSugar" placeholder="Normal: 70 - 99" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm outline-none focus:ring-2 focus:ring-rose-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Post-Meal (Khane ke 2 ghante baad):</label>
+              <input type="number" id="postMealSugar" placeholder="Normal: < 140" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-sm outline-none focus:ring-2 focus:ring-rose-500">
+            </div>
+          </div>
+
+          <button onclick="analyzeBloodSugar()" class="w-full mt-4 bg-rose-600 hover:bg-rose-700 text-white font-bold py-2.5 rounded-xl text-sm shadow-md shadow-rose-600/20 transition">
+            Analyze Sugar Reading
+          </button>
+
+          <!-- Sugar Result Box -->
+          <div id="sugarResultBox" class="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Glycemic Assessment:</span>
+              <div class="flex items-center gap-1.5" id="sugarBadgesContainer">
+                <span id="fastingBadge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Fasting: --</span>
+                <span id="postMealBadge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">PP: --</span>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-3 border-t border-slate-200/60 dark:border-slate-700 text-xs">
+              <p id="sugarDesiAdvice" class="text-slate-600 dark:text-slate-400">
+                Enter Fasting (<99 normal) or Post-Meal (<140 normal) reading to see personalized Indian dietary guidelines.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FEATURE 7: BMI HISTORY & CANVAS GRAPH -->
+      <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow">
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 gap-3">
+          <div>
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-chart-line text-brand-600"></i>
+              BMI History & Visual Trend Graph
+            </h3>
+            <p class="text-xs text-slate-500">Track changes in your Asian BMI over time (stored in localStorage)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold text-slate-500">Target Range: 18.5 - 22.9</span>
+            <button onclick="clearBmiHistory()" class="text-xs text-rose-600 hover:text-rose-700 font-semibold px-2 py-1 rounded border border-rose-200 dark:border-rose-900/60 hover:bg-rose-50 transition">
+              Clear History
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6 items-center">
+          <!-- Canvas Graph Container -->
+          <div class="lg:col-span-8 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-2xl border border-slate-200/60 dark:border-slate-700">
+            <canvas id="bmiChartCanvas" class="w-full h-56 rounded-xl block"></canvas>
+            <div class="flex justify-between items-center text-[11px] text-slate-400 mt-2 px-2">
+              <span>Oldest Record</span>
+              <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-brand-600 inline-block"></span> Your Logged BMI Points</span>
+              <span>Latest Record</span>
+            </div>
+          </div>
+
+          <!-- History Recent List -->
+          <div class="lg:col-span-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Last 10 Records</h4>
+            <div id="bmiHistoryList" class="space-y-2 max-h-56 overflow-y-auto pr-1 custom-scroll text-xs">
+              <!-- Dynamically rendered history rows -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= MODULE 2: DIET & MEAL PLANNER ================= -->
+    <section id="diet" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">Indian Nutrition</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
+            7-Day Low-GI Indian Meal Plan
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl">
+            Rich in fiber, complex carbs, lentils (dal), sprouts, ragi, jowar, and paneer. Minimizes insulin spikes.
+          </p>
+        </div>
+
+        <!-- Search box & Print CTA -->
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <input type="text" id="mealSearchInput" onkeyup="filterMealPlan()" placeholder="Search dishes (e.g. Ragi, Dal, Paneer)..." class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 outline-none w-60 sm:w-72">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+          </div>
+          <button onclick="window.print()" class="bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition flex items-center gap-1.5 whitespace-nowrap">
+            <i class="fa-solid fa-print"></i>
+            <span>Print Diet</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Meal Plan Table / Cards -->
+      <div class="overflow-x-auto bg-white dark:bg-slate-900 rounded-custom border border-slate-200/80 dark:border-slate-800 card-shadow custom-scroll">
+        <table class="w-full text-left text-xs sm:text-sm border-collapse" id="mealPlanTable">
+          <thead>
+            <tr class="bg-slate-100/80 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-b border-slate-200 dark:border-slate-700 font-bold uppercase tracking-wider text-[11px]">
+              <th class="py-3.5 px-4 w-28">Day</th>
+              <th class="py-3.5 px-4">Breakfast (8:30 AM)</th>
+              <th class="py-3.5 px-4">Lunch (1:30 PM)</th>
+              <th class="py-3.5 px-4">4 PM Desi Snack</th>
+              <th class="py-3.5 px-4">Dinner (8:00 PM)</th>
+            </tr>
+          </thead>
+          <tbody id="mealTableBody" class="divide-y divide-slate-100 dark:divide-slate-800/80 text-slate-600 dark:text-slate-300">
+            <!-- Dynamically injected meal days -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tea-Time Snack Swaps & Low-GI Golden Rules Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Tea-Time Snack Swaps -->
+        <div class="lg:col-span-6 bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-slate-900 dark:text-white">Tea-Time Desi Snack Swaps</h3>
+              <p class="text-xs text-slate-500">Chai ke sath sugar aur maida band, desi swap chalu</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400 flex items-center justify-center text-xs font-bold">✕</span>
+                <span class="font-medium text-slate-700 dark:text-slate-300 text-xs">Fried Namkeen / Bhujia</span>
+              </div>
+              <i class="fa-solid fa-arrow-right text-brand-600 text-xs"></i>
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="font-bold text-brand-700 dark:text-brand-300 text-xs">Roasted Turmeric Makhana</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400 flex items-center justify-center text-xs font-bold">✕</span>
+                <span class="font-medium text-slate-700 dark:text-slate-300 text-xs">Deep-Fried Aloo Samosa</span>
+              </div>
+              <i class="fa-solid fa-arrow-right text-brand-600 text-xs"></i>
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="font-bold text-brand-700 dark:text-brand-300 text-xs">Sprouted Moong & Paneer Chaat</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400 flex items-center justify-center text-xs font-bold">✕</span>
+                <span class="font-medium text-slate-700 dark:text-slate-300 text-xs">Aerated Cold Drink / Cola</span>
+              </div>
+              <i class="fa-solid fa-arrow-right text-brand-600 text-xs"></i>
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="font-bold text-brand-700 dark:text-brand-300 text-xs">Spiced Jeera Chaas (Buttermilk)</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400 flex items-center justify-center text-xs font-bold">✕</span>
+                <span class="font-medium text-slate-700 dark:text-slate-300 text-xs">Maida Glucose Biscuits</span>
+              </div>
+              <i class="fa-solid fa-arrow-right text-brand-600 text-xs"></i>
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center text-xs font-bold">✓</span>
+                <span class="font-bold text-brand-700 dark:text-brand-300 text-xs">Roasted Chana (Chikna) & Almonds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Low-GI Golden Rules -->
+        <div class="lg:col-span-6 bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-slate-900 dark:text-white">Desi Low-GI Golden Rules</h3>
+              <p class="text-xs text-slate-500">Simple Indian principles to prevent insulin resistance</p>
+            </div>
+          </div>
+
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
+              <span><strong>The Salad First Rule:</strong> Sabse pehle cucumber, tomato, mooli khao. Iska soluble fiber gut me gel banata hai, jisse roti/chawal ka glucose slow absorb hota hai.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
+              <span><strong>Switch Wheat to Millets:</strong> Normal gehun ke aate me Ragi, Jowar ya Besan milao (Multigrain ratio: 60% millets, 40% wheat) for lower GI index.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
+              <span><strong>Add Protein to Every Thali:</strong> Katori bhar Dal, Dahi, Paneer ya Soyakhand har meal me zaroor rakhein. Protein slows down gastric emptying.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-check text-brand-600 mt-1"></i>
+              <span><strong>10-Minute Post-Meal Shatapavali:</strong> Khane ke baad turant soyein ya baithein mat. 100 kadam (10 minute) tahalna blood sugar ko muscles me bhej deta hai.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= MODULE 6: LEADERBOARD (FEATURE 9) ================= -->
+    <section id="leaderboard" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-amber-500">Community Fitness</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1 flex items-center gap-2">
+            🏆 Daily Steps Leaderboard
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Apna naam aur steps dalo aur top rankers me aao!</p>
+        </div>
+
+        <!-- Add Entry Form -->
+        <div class="bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2 shadow-sm">
+          <input type="text" id="leaderNameInput" placeholder="Aapka Naam" class="bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs outline-none w-36">
+          <input type="number" id="leaderStepsInput" placeholder="Steps (e.g. 12000)" class="bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs outline-none w-32">
+          <button onclick="addLeaderboardEntry()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-3 py-1.5 rounded-xl text-xs transition">
+            Add Karo
+          </button>
+        </div>
+      </div>
+
+      <!-- Top 5 Leaderboard Cards -->
+      <div id="leaderboardContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3.5">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- ================= MODULE 7: BEFORE / AFTER PHOTO TRACKER (FEATURE 10) ================= -->
+    <section id="transformation" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-teal-600 dark:text-teal-400">Visual Motivation</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
+          📸 Before & After Transformation Tracker
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+          Upload and compare your journey securely. <span class="text-brand-600 font-bold">Privacy Guarantee:</span> Photos are stored strictly on your phone/browser and never uploaded to any server.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        
+        <!-- BEFORE Photo Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-5 border border-slate-200/80 dark:border-slate-800 card-shadow text-center">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full">Phase 1: Starting Point</span>
+            <span class="text-xs text-slate-400">Day 1</span>
+          </div>
+
+          <div class="relative w-full h-56 bg-slate-100 dark:bg-slate-800/80 rounded-2xl flex flex-col items-center justify-center overflow-hidden border-2 border-dashed border-slate-300 dark:border-slate-700 cursor-pointer group" onclick="document.getElementById('beforePhotoFile').click()">
+            <img id="beforeImgPreview" src="" alt="Before Preview" class="w-full h-full object-cover hidden">
+            <div id="beforePlaceholder" class="p-4 text-center">
+              <i class="fa-solid fa-cloud-arrow-up text-3xl text-slate-400 group-hover:text-brand-600 transition"></i>
+              <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mt-2">Click to Upload BEFORE Photo</p>
+              <p class="text-[10px] text-slate-400">PNG / JPG (Private local storage)</p>
+            </div>
+            <input type="file" id="beforePhotoFile" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'before')">
+          </div>
+
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <label class="text-xs font-bold text-slate-600 dark:text-slate-400">Starting Weight:</label>
+            <div class="relative w-36">
+              <input type="number" id="beforeWeightInput" placeholder="e.g. 84" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs text-right pr-8 font-bold outline-none" oninput="savePhotoMeta()">
+              <span class="absolute right-2.5 top-1.5 text-xs text-slate-400 font-semibold">kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AFTER Photo Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-5 border border-slate-200/80 dark:border-slate-800 card-shadow text-center">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider bg-brand-50 dark:bg-brand-950/60 text-brand-700 dark:text-brand-300 px-3 py-1 rounded-full">Phase 2: Fit Life Progress</span>
+            <span class="text-xs text-brand-600 font-semibold">Latest</span>
+          </div>
+
+          <div class="relative w-full h-56 bg-slate-100 dark:bg-slate-800/80 rounded-2xl flex flex-col items-center justify-center overflow-hidden border-2 border-dashed border-slate-300 dark:border-slate-700 cursor-pointer group" onclick="document.getElementById('afterPhotoFile').click()">
+            <img id="afterImgPreview" src="" alt="After Preview" class="w-full h-full object-cover hidden">
+            <div id="afterPlaceholder" class="p-4 text-center">
+              <i class="fa-solid fa-cloud-arrow-up text-3xl text-brand-500 group-hover:text-brand-600 transition"></i>
+              <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mt-2">Click to Upload AFTER Photo</p>
+              <p class="text-[10px] text-slate-400">PNG / JPG (Private local storage)</p>
+            </div>
+            <input type="file" id="afterPhotoFile" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'after')">
+          </div>
+
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <label class="text-xs font-bold text-slate-600 dark:text-slate-400">Current Weight:</label>
+            <div class="relative w-36">
+              <input type="number" id="afterWeightInput" placeholder="e.g. 74" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs text-right pr-8 font-bold outline-none" oninput="savePhotoMeta()">
+              <span class="absolute right-2.5 top-1.5 text-xs text-slate-400 font-semibold">kg</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Comparison Summary and Share Buttons -->
+      <div class="max-w-4xl mx-auto bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-brand-500/10 border border-brand-200 dark:border-brand-900/60 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h4 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+            <span>🎉 Your Transformation Delta:</span>
+            <span id="weightDeltaBadge" class="text-brand-700 dark:text-brand-400 font-extrabold text-base">Enter weights above</span>
+          </h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Har kilo ka reduction aapke ghutne aur dil ke liye vardaan hai!</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="shareTransformationWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-green-600/20 transition flex items-center gap-1.5">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Share My Progress</span>
+          </button>
+          <button onclick="clearTransformation()" class="bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-xs font-bold px-3 py-2.5 rounded-xl hover:bg-slate-50 transition">
+            Reset
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= MODULE 3: HEALTHCARE MACHINE STORE ================= -->
+    <section id="devices" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">Doctor Recommended Gear</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">
+          Essential Home Healthcare Devices
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
+          Clinical-grade blood pressure, glucose, and body composition monitors verified for Indian households.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Product 1: Omron BP Monitor -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow flex flex-col justify-between hover:border-brand-500/50 transition">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300 px-2.5 py-0.5 rounded-full">Top Doctor Pick</span>
+              <span class="text-xs font-bold text-amber-500"><i class="fa-solid fa-star"></i> 4.6 (18,400+)</span>
+            </div>
+
+            <div class="h-36 bg-slate-50 dark:bg-slate-800/60 rounded-xl flex items-center justify-center mb-4 text-center p-3">
+              <i class="fa-solid fa-heart-pulse text-5xl text-blue-500"></i>
+            </div>
+
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Omron HEM 7120 Digital BP Monitor</h3>
+            <p class="text-xs text-slate-500 mt-1">Fully Automatic Blood Pressure Monitor with IntelliSense Technology.</p>
+
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-2xl font-extrabold text-slate-900 dark:text-white">₹1,949</span>
+              <span class="text-xs text-slate-400 line-through">₹2,840</span>
+              <span class="text-xs font-bold text-emerald-600">31% OFF</span>
+            </div>
+
+            <!-- Specs & Pros/Cons -->
+            <div class="mt-4 space-y-2 text-xs">
+              <p class="text-slate-600 dark:text-slate-300"><strong>Specs:</strong> Cuff size 22-32 cm, Hypertension Indicator, Body Movement Detection.</p>
+              <div class="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
+                <p class="text-emerald-700 dark:text-emerald-400 font-semibold">✓ Pros: High clinical accuracy, 3-year warranty, one-touch start.</p>
+                <p class="text-rose-600 dark:text-rose-400 font-semibold mt-1">✕ Cons: Single memory slot, basic LCD backlighting.</p>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 italic text-[11px] pt-1">
+                <strong>Verdict:</strong> Gold standard for parents with hypertension. Highly durable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Dual Affiliate CTA -->
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+            <a href="https://www.amazon.in/s?k=omron+hem+7120" target="_blank" rel="nofollow sponsored" class="w-full block text-center bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition shadow-sm">
+              <i class="fa-brands fa-amazon mr-1.5"></i> Check Price on Amazon
+            </a>
+            <a href="https://www.flipkart.com/search?q=omron+hem+7120" target="_blank" rel="nofollow sponsored" class="w-full block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition">
+              <i class="fa-solid fa-cart-shopping mr-1.5"></i> View on Flipkart
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 2: Accu-Chek Glucometer -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow flex flex-col justify-between hover:border-brand-500/50 transition">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300 px-2.5 py-0.5 rounded-full">Diabetes Essential</span>
+              <span class="text-xs font-bold text-amber-500"><i class="fa-solid fa-star"></i> 4.5 (24,100+)</span>
+            </div>
+
+            <div class="h-36 bg-slate-50 dark:bg-slate-800/60 rounded-xl flex items-center justify-center mb-4 text-center p-3">
+              <i class="fa-solid fa-droplet text-5xl text-rose-500"></i>
+            </div>
+
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Accu-Chek Instant Glucometer Kit</h3>
+            <p class="text-xs text-slate-500 mt-1">Target range indicator with instant visual color confirmation.</p>
+
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-2xl font-extrabold text-slate-900 dark:text-white">₹1,149</span>
+              <span class="text-xs text-slate-400 line-through">₹1,699</span>
+              <span class="text-xs font-bold text-emerald-600">32% OFF</span>
+            </div>
+
+            <!-- Specs & Pros/Cons -->
+            <div class="mt-4 space-y-2 text-xs">
+              <p class="text-slate-600 dark:text-slate-300"><strong>Specs:</strong> 4-second reading time, Bluetooth sync to mySugr app, ISO 15197:2013 compliant.</p>
+              <div class="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
+                <p class="text-emerald-700 dark:text-emerald-400 font-semibold">✓ Pros: Minimal 0.6 µl blood drop needed, painless Softclix lancet.</p>
+                <p class="text-rose-600 dark:text-rose-400 font-semibold mt-1">✕ Cons: Replacement strips can feel expensive over time.</p>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 italic text-[11px] pt-1">
+                <strong>Verdict:</strong> Most trusted glucose meter in India for diabetes reversal tracking.
+              </p>
+            </div>
+          </div>
+
+          <!-- Dual Affiliate CTA -->
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+            <a href="https://www.amazon.in/s?k=accu+chek+instant" target="_blank" rel="nofollow sponsored" class="w-full block text-center bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition shadow-sm">
+              <i class="fa-brands fa-amazon mr-1.5"></i> Check Price on Amazon
+            </a>
+            <a href="https://www.flipkart.com/search?q=accu+chek+instant" target="_blank" rel="nofollow sponsored" class="w-full block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition">
+              <i class="fa-solid fa-cart-shopping mr-1.5"></i> View on Flipkart
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 3: Smart Weighing Scale -->
+        <div class="bg-white dark:bg-slate-900 rounded-custom p-6 border border-slate-200/80 dark:border-slate-800 card-shadow flex flex-col justify-between hover:border-brand-500/50 transition">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300 px-2.5 py-0.5 rounded-full">Body Composition</span>
+              <span class="text-xs font-bold text-amber-500"><i class="fa-solid fa-star"></i> 4.4 (12,900+)</span>
+            </div>
+
+            <div class="h-36 bg-slate-50 dark:bg-slate-800/60 rounded-xl flex items-center justify-center mb-4 text-center p-3">
+              <i class="fa-solid fa-scale-balanced text-5xl text-purple-500"></i>
+            </div>
+
+            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Smart Bluetooth BIA Weighing Scale</h3>
+            <p class="text-xs text-slate-500 mt-1">Measures Body Fat %, Visceral Fat, Muscle Mass, and Bone Density.</p>
+
+            <div class="mt-3 flex items-baseline gap-2">
+              <span class="text-2xl font-extrabold text-slate-900 dark:text-white">₹1,399</span>
+              <span class="text-xs text-slate-400 line-through">₹2,499</span>
+              <span class="text-xs font-bold text-emerald-600">44% OFF</span>
+            </div>
+
+            <!-- Specs & Pros/Cons -->
+            <div class="mt-4 space-y-2 text-xs">
+              <p class="text-slate-600 dark:text-slate-300"><strong>Specs:</strong> 13 Body Composition parameters, tempered glass surface, 180kg limit.</p>
+              <div class="bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-lg border border-slate-100 dark:border-slate-800">
+                <p class="text-emerald-700 dark:text-emerald-400 font-semibold">✓ Pros: Immediate Bluetooth smartphone sync, multi-user profiles.</p>
+                <p class="text-rose-600 dark:text-rose-400 font-semibold mt-1">✕ Cons: Must step barefoot for bio-impedance sensors to work.</p>
+              </div>
+              <p class="text-slate-500 dark:text-slate-400 italic text-[11px] pt-1">
+                <strong>Verdict:</strong> Crucial to identify Indian "skinny fat" syndrome (visceral fat).
+              </p>
+            </div>
+          </div>
+
+          <!-- Dual Affiliate CTA -->
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+            <a href="https://www.amazon.in/s?k=smart+weighing+scale+body+fat" target="_blank" rel="nofollow sponsored" class="w-full block text-center bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-xl text-xs transition shadow-sm">
+              <i class="fa-brands fa-amazon mr-1.5"></i> Check Price on Amazon
+            </a>
+            <a href="https://www.flipkart.com/search?q=smart+weighing+scale" target="_blank" rel="nofollow sponsored" class="w-full block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition">
+              <i class="fa-solid fa-cart-shopping mr-1.5"></i> View on Flipkart
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= MODULE 4: FREE DOWNLOADS & NEWSLETTER ================= -->
+    <section id="downloads" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      
+      <div class="bg-gradient-to-tr from-brand-700 via-brand-600 to-tealAccent rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-4">
+            <span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+              🎁 100% Free Resources
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Download 30-Day Desi Habit Tracker & Grocery Checklist
+            </h2>
+            <p class="text-sm sm:text-base text-emerald-50 leading-relaxed max-w-xl">
+              Get our printable habit tracking calendar, diabetic-friendly desi grocery checklist, and seasonal Indian meal rotation chart delivered to your inbox instantly.
+            </p>
+
+            <!-- Previews -->
+            <div class="pt-2 grid grid-cols-2 gap-4 max-w-md text-xs">
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-3 rounded-xl flex items-center gap-2.5">
+                <i class="fa-solid fa-file-pdf text-rose-300 text-xl"></i>
+                <div>
+                  <p class="font-bold">30-Day Tracker</p>
+                  <span class="text-[10px] text-emerald-200">Printable PDF (A4)</span>
+                </div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 p-3 rounded-xl flex items-center gap-2.5">
+                <i class="fa-solid fa-clipboard-list text-amber-300 text-xl"></i>
+                <div>
+                  <p class="font-bold">Desi Grocery List</p>
+                  <span class="text-[10px] text-emerald-200">Low-GI Ration Kit</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Signup Form -->
+          <div class="lg:col-span-5 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 p-6 sm:p-8 rounded-2xl shadow-2xl">
+            <h3 class="text-lg font-bold">Instant Free Download</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">No spam ever. Just pure health tips and tools.</p>
+
+            <form onsubmit="handleDownloadSubmit(event)" class="mt-5 space-y-3">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Your Name:</label>
+                <input type="text" id="subscriberName" required placeholder="Aapka Naam" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs sm:text-sm outline-none focus:ring-2 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-1">Email Address:</label>
+                <input type="email" id="subscriberEmail" required placeholder="naam@example.com" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs sm:text-sm outline-none focus:ring-2 focus:ring-brand-500">
+              </div>
+
+              <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl text-xs sm:text-sm shadow-md shadow-brand-600/30 transition">
+                <i class="fa-solid fa-download mr-1.5"></i> Download Free PDF Kit
+              </button>
+            </form>
+
+            <p id="downloadFeedback" class="text-center text-xs mt-3 hidden font-semibold text-emerald-600 dark:text-emerald-400">
+              🎉 Shandar! Download shuru ho gaya hai. Aapke inbox me bhi copy bhej di gayi hai!
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div> <!-- End Printable Master Container -->
+
+  <!-- ================= MODULE 5: LEGAL & MEDICAL FOOTER ================= -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-12 py-10 no-print transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Brand Summary -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white">
+              <i class="fa-solid fa-heart-pulse text-lg"></i>
+            </div>
+            <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Fit<span class="text-brand-600">India</span>Life<span class="text-xs text-brand-500">.in</span></span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Empowering every Indian family with actionable preventive healthcare, culturally appropriate low-GI meal structures, and Asian-calibrated fitness trackers.
+          </p>
+          <div class="flex items-center gap-3 text-slate-400 text-sm pt-2">
+            <span class="hover:text-brand-600 cursor-pointer"><i class="fa-brands fa-whatsapp"></i></span>
+            <span class="hover:text-brand-600 cursor-pointer"><i class="fa-brands fa-youtube"></i></span>
+            <span class="hover:text-brand-600 cursor-pointer"><i class="fa-brands fa-instagram"></i></span>
+            <span class="hover:text-brand-600 cursor-pointer"><i class="fa-brands fa-telegram"></i></span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 text-xs space-y-2">
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider mb-2">Pramukh Tools</h4>
+          <p><a href="#trackers" class="hover:text-brand-600 text-slate-600 dark:text-slate-400">Asian BMI Calculator</a></p>
+          <p><a href="#trackers" class="hover:text-brand-600 text-slate-600 dark:text-slate-400">Water & Steps Dashboard</a></p>
+          <p><a href="#diet" class="hover:text-brand-600 text-slate-600 dark:text-slate-400">7-Day Low GI Diet</a></p>
+          <p><a href="#leaderboard" class="hover:text-brand-600 text-slate-600 dark:text-slate-400">Daily Steps Leaderboard</a></p>
+          <p><a href="#devices" class="hover:text-brand-600 text-slate-600 dark:text-slate-400">BP & Glucose Monitors</a></p>
+        </div>
+
+        <!-- Disclaimers Column -->
+        <div class="md:col-span-4 space-y-3 text-xs">
+          <h4 class="font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider mb-2">Legal & Ethics</h4>
+          <p class="text-slate-500 dark:text-slate-400">
+            <strong>Medical Disclaimer:</strong> The content, calculators, and diet plans on FitIndiaLife.in are for educational, lifestyle, and wellness purposes only and do not replace professional medical advice, diagnosis, or treatment. Always consult your personal physician before making major dietary alterations.
+          </p>
+          <p class="text-slate-500 dark:text-slate-400">
+            <strong>Affiliate Disclosure:</strong> FitIndiaLife.in participates in affiliate programs including Amazon Associates and Flipkart. We may earn a small referral commission if you buy products through our links at zero extra cost to you.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-slate-200/80 dark:border-slate-800 text-center text-xs text-slate-400">
+        <p>© <span id="currentYear">2026</span> FitIndiaLife.in • Made with ❤️ for a Healthy & Fit India • Swasth Bharat, Samriddh Bharat</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= FEATURE 11: FLOATING AI HEALTH CHATBOT ================= -->
+  <div class="fixed bottom-6 right-6 z-50 no-print">
+    
+    <!-- Floating Trigger Bubble -->
+    <button id="chatbotToggleBtn" onclick="toggleChatbot()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-brand-600 to-tealAccent text-white shadow-xl shadow-brand-600/30 flex items-center justify-center hover:scale-110 active:scale-95 transition transform duration-200 focus:outline-none relative" aria-label="Open Desi Health AI Chatbot">
+      <i id="chatbotIcon" class="fa-solid fa-comment-dots text-2xl"></i>
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-400 border-2 border-white dark:border-slate-900 rounded-full animate-ping"></span>
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-400 border-2 border-white dark:border-slate-900 rounded-full"></span>
+    </button>
+
+    <!-- Chat Window Container -->
+    <div id="chatbotWindow" class="hidden absolute bottom-16 right-0 w-[92vw] sm:w-96 max-w-[400px] h-[520px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-brand-600 to-tealAccent p-4 text-white flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center font-bold text-white">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm">FitIndia Desi AI Saathi</h4>
+            <span class="text-[10px] text-emerald-100 flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-300"></span> Online • Hinglish Desi Diet Guide
+            </span>
+          </div>
+        </div>
+        <button onclick="toggleChatbot()" class="text-white/80 hover:text-white text-lg w-7 h-7 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs custom-scroll bg-slate-50/70 dark:bg-slate-950/40">
+        
+        <!-- Welcome Message -->
+        <div class="flex items-start gap-2">
+          <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] shrink-0 mt-0.5">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 p-3 rounded-2xl rounded-tl-sm text-slate-800 dark:text-slate-100 shadow-sm max-w-[85%]">
+            <p><strong>Namaste ji! 🙏</strong> Main hoon aapka FitIndia Desi Health AI Saathi. Aap sugar, motapa, nashta, ya pani ke bare me kuch bhi pooch sakte hain.</p>
+            <p class="text-[9px] text-slate-400 mt-1 italic">Ye AI general jankari deta hai, doctor ki salah nahi hai.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div class="px-3 py-2 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex items-center gap-1.5 overflow-x-auto no-scrollbar text-[11px] whitespace-nowrap">
+        <button onclick="sendQuickPrompt('sugar me kya khau')" class="bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/60 dark:hover:bg-brand-900 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full font-semibold transition">
+          🍬 Sugar me kya khau?
+        </button>
+        <button onclick="sendQuickPrompt('weight kaise kam karu')" class="bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/60 dark:hover:bg-brand-900 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full font-semibold transition">
+          ⚖️ Weight loss kaise kare?
+        </button>
+        <button onclick="sendQuickPrompt('BP high hai')" class="bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/60 dark:hover:bg-brand-900 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full font-semibold transition">
+          🩺 High BP tips
+        </button>
+        <button onclick="sendQuickPrompt('subah ka nashta')" class="bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/60 dark:hover:bg-brand-900 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full font-semibold transition">
+          🥣 Healthy Nashta
+        </button>
+        <button onclick="sendQuickPrompt('pani')" class="bg-brand-50 hover:bg-brand-100 dark:bg-brand-950/60 dark:hover:bg-brand-900 text-brand-700 dark:text-brand-300 px-2.5 py-1 rounded-full font-semibold transition">
+          💧 Pani kitna piye?
+        </button>
+      </div>
+
+      <!-- Chat Input Field -->
+      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+        <input type="text" id="chatInput" placeholder="Yahan type karein (e.g. roti vs chawal)..." class="flex-1 bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2 text-xs outline-none focus:ring-2 focus:ring-brand-500">
+        <button type="submit" class="w-9 h-9 bg-brand-600 hover:bg-brand-700 text-white rounded-xl flex items-center justify-center transition shadow-sm shrink-0">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* =======================================================================
+       1. GLOBAL STATE & LOCAL STORAGE KEYS
+    ======================================================================= */
+    const STORAGE_THEME = 'fitindia_theme';
+    const STORAGE_LANG = 'fitindia_lang';
+    const STORAGE_STREAK = 'fitindia_streak';
+    const STORAGE_LAST_VISIT = 'fitindia_last_visit';
+    const STORAGE_WATER = 'fitindia_water_ml';
+    const STORAGE_STEPS = 'fitindia_steps';
+    const STORAGE_BMI_HISTORY = 'fitindia_bmi_history';
+    const STORAGE_LEADERBOARD = 'fitindia_leaderboard';
+    const STORAGE_BEFORE_IMG = 'fitindia_photo_before';
+    const STORAGE_AFTER_IMG = 'fitindia_photo_after';
+    const STORAGE_BEFORE_WEIGHT = 'fitindia_wt_before';
+    const STORAGE_AFTER_WEIGHT = 'fitindia_wt_after';
+    const STORAGE_REMINDER_STATE = 'fitindia_reminder_enabled';
+
+    let currentLanguage = 'en';
+    let heightUnit = 'cm';
+    let reminderIntervalId = null;
+
+    // Daily Tips Database (FEATURE 4)
+    const desiTipsList = [
+      "Khane se 10 min pehle kacha salad (kheera, tamatar) khao - blood sugar spike 40% tak kam hoti hai!",
+      "Subah uthte hi 2 gilas gunguna pani baith kar piyein, pet saaf rahega aur metabolism tez hoga.",
+      "Chai ke sath fried namkeen band karke roasted makhana ya bhuna chana khana shuru karein.",
+      "Normal gehun ke aate me 30% besan ya ragi ka aata milayein, roti ka Glycemic Index kam ho jayega.",
+      "Raat ke khane ke baad turant bistar par na jayein, kam se kam 100 kadam (shatapavali) zaroor chalein.",
+      "Safed cheeni (white sugar) ki jagah stevia ya natural sweetness chunein, insulin resistant hone se bachein.",
+      "Har thali me ek katori dahi ya chane/dal ka protein zaroor shamil karein muscle bachane ke liye.",
+      "Din bhar me 10,000 kadam chalna dil ki bimariyo ka khatra 50% tak ghata deta hai!"
+    ];
+
+    // 7-Day Indian Low-GI Diet Plan (MODULE 2)
+    const mealPlanData = [
+      {
+        day: "Monday (Somwar)",
+        breakfast: "Sprouted Moong Cheela with Mint Chutney & 1 cup Green Tea",
+        lunch: "2 Ragi Rotis + Palak Paneer + 1 bowl Dal Tadka + Kheera Salad",
+        snack: "1 small bowl Roasted Turmeric Makhana + 1 cup Lemon Ginger Tea",
+        dinner: "1 bowl Lauki (Bottle Gourd) Chana Dal Sabzi + 1 Multigrain Roti + Cucumber Raita"
+      },
+      {
+        day: "Tuesday (Mangalwar)",
+        breakfast: "Vegetable Oats Upma loaded with peas, carrots & roasted peanuts",
+        lunch: "1 cup Brown Rice / Foxtail Millet + Rajma + Roasted Papad + Onion-Tomato Kachumber",
+        snack: "Handful of Soaked Almonds & Walnuts + Black Masala Tea (no sugar)",
+        dinner: "Grilled Tofu or Paneer Bhurji with Capsicum + 2 Methi Phulkas"
+      },
+      {
+        day: "Wednesday (Budhwar)",
+        breakfast: "Besan Chilla stuffed with grated Paneer & Coriander Chutney",
+        lunch: "2 Jowar Rotis + Baingan Bharta + Yellow Moong Dal + Tomato Salad",
+        snack: "Spiced Roasted Chana (Bhuna) + Glass of Chilled Spiced Chaas (Buttermilk)",
+        dinner: "Vegetable & Soya Chunk Stew + 1 small bowl Quinoa or 1 Multigrain Phulka"
+      },
+      {
+        day: "Thursday (Guruwar)",
+        breakfast: "2 Steamed Ragi Idlis + Coconut Chutney (mild) + Vegetable Sambar",
+        lunch: "1 bowl Soya Matar Sabzi + 2 Missi Rotis (Besan+Wheat) + Fresh Curd (Dahi)",
+        snack: "Boiled Sprouted Kala Chana Chaat with chopped onion, tomato, lemon & jeera",
+        dinner: "Mixed Vegetable Dalia with French beans, carrots & Moong Dal khichdi (Low GI)"
+      },
+      {
+        day: "Friday (Shukrawar)",
+        breakfast: "Paneer & Spinach stuffed Multigrain Paratha (made with light olive or mustard oil)",
+        lunch: "2 Jowar/Bajra Rotis + Bhindi Masala + 1 bowl Chana Dal + Beetroot Salad",
+        snack: "1 glass Sattu Sharbat (Jeera, salt, lemon - high natural protein)",
+        dinner: "Stir-fried Paneer/Mushroom with broccoli & bell peppers + 1 Ragi Phulka"
+      },
+      {
+        day: "Saturday (Shaniwar)",
+        breakfast: "Poha loaded with extra veggies, boiled sprouts & roasted mustard seeds",
+        lunch: "Kadhi Pakora (steamed or air-fried pakora) + Brown Rice or 2 Multigrain Rotis",
+        snack: "Cucumber & Carrot sticks with homemade mint curd dip",
+        dinner: "Moong Dal Soup + 2 Oats-Methi Rotis + Steamed Cauliflower/Peas Sabzi"
+      },
+      {
+        day: "Sunday (Raviwar)",
+        breakfast: "Methi Thepla (low oil) + 1 boiled egg OR 50g fresh Paneer + Spiced Curd",
+        lunch: "Sunday Special Dal Makhani (made with low butter/milk) + 2 Jowar Rotis + Large Salad Thali",
+        snack: "Roasted Peanut & Puffed Rice (Kurmura) Bhel with raw mango & green chillies",
+        dinner: "Light Bottle Gourd (Ghia) soup + Grilled Paneer Tikka with lemon & onion rings"
+      }
+    ];
+
+    /* =======================================================================
+       2. INITIALIZATION ON PAGE LOAD
+    ======================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initLanguage();
+      handleDailyStreak();
+      initWaterTracker();
+      initStepsTracker();
+      initBmiHistoryAndChart();
+      renderMealPlanTable(mealPlanData);
+      initLeaderboard();
+      initTransformationTracker();
+      initDailyReminders();
+      initTips();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    });
+
+    /* =======================================================================
+       3. FEATURE 1: DARK MODE
+    ======================================================================= */
+    function initTheme() {
+      const savedTheme = localStorage.getItem(STORAGE_THEME);
+      const isDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      applyTheme(isDark);
+
+      document.getElementById('themeToggleBtn').addEventListener('click', () => {
+        const currentlyDark = document.documentElement.classList.contains('dark');
+        applyTheme(!currentlyDark);
+      });
+    }
+
+    function applyTheme(isDark) {
+      const icon = document.getElementById('themeIcon');
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        icon.className = 'fa-solid fa-sun text-amber-400';
+        localStorage.setItem(STORAGE_THEME, 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        icon.className = 'fa-solid fa-moon text-slate-700';
+        localStorage.setItem(STORAGE_THEME, 'light');
+      }
+      // Re-draw canvas for dark theme colors
+      drawBmiCanvasChart();
+    }
+
+    /* =======================================================================
+       4. FEATURE 2: HINDI / ENGLISH TOGGLE
+    ======================================================================= */
+    function initLanguage() {
+      const savedLang = localStorage.getItem(STORAGE_LANG) || 'en';
+      setLanguage(savedLang);
+
+      document.getElementById('langToggleBtn').addEventListener('click', () => {
+        const nextLang = currentLanguage === 'en' ? 'hi' : 'en';
+        setLanguage(nextLang);
+      });
+    }
+
+    function setLanguage(lang) {
+      currentLanguage = lang;
+      localStorage.setItem(STORAGE_LANG, lang);
+      const label = document.getElementById('langLabel');
+      const heroTitle = document.getElementById('heroTitle');
+      const heroSubtitle = document.getElementById('heroSubtitle');
+
+      if (lang === 'hi') {
+        label.textContent = 'English';
+        heroTitle.innerHTML = 'देसी सेहत, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">स्मार्ट ट्रैकिंग</span>';
+        heroSubtitle.textContent = 'पानी, कदम, ब्लड शुगर और एशियन कट-ऑफ आधारित बीएमआई ट्रैक करें। प्रामाणिक लो-जीआई देसी भोजन की खोज करें और बिना अपनी संस्कृति छोड़े फिट रहें।';
+      } else {
+        label.textContent = 'हिंदी';
+        heroTitle.innerHTML = 'Desi Health, <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-teal-500">Smart Tracking</span>';
+        heroSubtitle.textContent = 'Track hydration, daily steps, blood sugar, and Asian-standard BMI tailored for Indian bodies. Discover authentic low-glycemic desi meals and cultivate lifelong fitness without giving up your culture.';
+      }
+    }
+
+    /* =======================================================================
+       5. FEATURE 3: DAILY STREAK COUNTER
+    ======================================================================= */
+    function handleDailyStreak() {
+      const todayStr = new Date().toDateString();
+      const lastVisit = localStorage.getItem(STORAGE_LAST_VISIT);
+      let streak = parseInt(localStorage.getItem(STORAGE_STREAK) || '1', 10);
+
+      if (lastVisit) {
+        const lastDate = new Date(lastVisit);
+        const today = new Date(todayStr);
+        const diffDays = Math.round((today - lastDate) / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 1) {
+          streak += 1;
+        } else if (diffDays > 1) {
+          streak = 1; // Streak broken
+        }
+      }
+
+      localStorage.setItem(STORAGE_STREAK, streak.toString());
+      localStorage.setItem(STORAGE_LAST_VISIT, todayStr);
+      document.getElementById('streakCount').textContent = streak;
+    }
+
+    /* =======================================================================
+       6. FEATURE 4: DAILY HEALTH TIP GENERATOR
+    ======================================================================= */
+    let currentTipIndex = 0;
+    function initTips() {
+      // Pick random initial tip
+      currentTipIndex = Math.floor(Math.random() * desiTipsList.length);
+      renderTip();
+    }
+
+    function getNewTip() {
+      currentTipIndex = (currentTipIndex + 1) % desiTipsList.length;
+      renderTip();
+    }
+
+    function renderTip() {
+      document.getElementById('tipText').textContent = `"${desiTipsList[currentTipIndex]}"`;
+      document.getElementById('tipCounter').textContent = `Tip ${currentTipIndex + 1} of ${desiTipsList.length}`;
+    }
+
+    /* =======================================================================
+       7. FEATURE 5: WHATSAPP SHARE
+    ======================================================================= */
+    function shareOnWhatsApp() {
+      const text = encodeURIComponent("Maine FitIndiaLife.in pe apna Asian BMI, Water aur Diet plan check kiya! Tu bhi kar aur swasth reh: https://fitindialife.in");
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+
+    /* =======================================================================
+       8. FEATURE 8: DAILY REMINDER (NOTIFICATIONS API)
+    ======================================================================= */
+    function initDailyReminders() {
+      const isEnabled = localStorage.getItem(STORAGE_REMINDER_STATE) === 'true';
+      updateReminderBadge(isEnabled);
+
+      if (isEnabled && Notification.permission === 'granted') {
+        startReminderInterval();
+      }
+    }
+
+    function toggleDailyReminder() {
+      if (!("Notification" in window)) {
+        showReminderFeedback("Is browser me notifications support nahi hai.", true);
+        return;
+      }
+
+      if (Notification.permission === 'granted') {
+        const newState = !(localStorage.getItem(STORAGE_REMINDER_STATE) === 'true');
+        localStorage.setItem(STORAGE_REMINDER_STATE, newState ? 'true' : 'false');
+        updateReminderBadge(newState);
+        if (newState) {
+          startReminderInterval();
+          showReminderFeedback("✅ Daily Reminders Chalu Ho Gaye! (8 AM Pani, 1 PM Walk, 8 PM Dinner)");
+        } else {
+          stopReminderInterval();
+          showReminderFeedback("Reminders band kar diye gaye hain.");
+        }
+      } else {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            localStorage.setItem(STORAGE_REMINDER_STATE, 'true');
+            updateReminderBadge(true);
+            startReminderInterval();
+            showReminderFeedback("✅ Notifications Allowed! Reminders activate ho gaye.");
+            new Notification("FitIndiaLife.in Active", {
+              body: "Shabash! Hum aapko 8 AM Pani, 1 PM Walk aur 8 PM Dinner ka yaad dilayenge.",
+              icon: "https://placehold.co/128x128/059669/ffffff?text=FitIndia"
+            });
+          } else {
+            showReminderFeedback("❌ Notification permission deny kar di gayi hai.", true);
+          }
+        });
+      }
+    }
+
+    function updateReminderBadge(enabled) {
+      const badge = document.getElementById('reminderStatusBadge');
+      const btn = document.getElementById('enableNotificationBtn');
+      if (enabled) {
+        badge.textContent = 'Active ON';
+        badge.className = 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
+        btn.innerHTML = '<i class="fa-solid fa-toggle-off mr-1"></i> Reminder OFF Karo';
+      } else {
+        badge.textContent = 'Off';
+        badge.className = 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+        btn.innerHTML = '<i class="fa-solid fa-toggle-on mr-1"></i> Reminder ON Karo';
+      }
+    }
+
+    function showReminderFeedback(msg, isError = false) {
+      const fb = document.getElementById('reminderFeedback');
+      fb.textContent = msg;
+      fb.className = `text-[11px] mt-2 italic text-center ${isError ? 'text-rose-500 font-bold' : 'text-emerald-600 dark:text-emerald-400 font-medium'}`;
+    }
+
+    function sendTestNotification() {
+      if (!("Notification" in window)) {
+        showReminderFeedback("Browser notifications not supported.", true);
+        return;
+      }
+      if (Notification.permission === 'granted') {
+        new Notification("Fit India Life • Test Alert 💧", {
+          body: "Subah ka taaza paani piyein aur 500 kadam walk karein! Aapki sehat aapke haath.",
+          icon: "https://placehold.co/128x128/059669/ffffff?text=FIL"
+        });
+        showReminderFeedback("🚀 Test notification bhej diya gaya hai!");
+      } else {
+        Notification.requestPermission().then(p => {
+          if (p === 'granted') {
+            sendTestNotification();
+          } else {
+            showReminderFeedback("Pehle 'Reminder ON' dabakar permission allow karein.", true);
+          }
+        });
+      }
+    }
+
+    function startReminderInterval() {
+      stopReminderInterval();
+      reminderIntervalId = setInterval(() => {
+        const now = new Date();
+        const hrs = now.getHours();
+        const mins = now.getMinutes();
+
+        // 8:00 AM Water Reminder
+        if (hrs === 8 && mins === 0) {
+          triggerBrowserNotification("Pani Pine Ka Samay 💧", "Subah ke 8 baj gaye hain! Kam se kam 2 gilas taaza paani piyein.");
+        }
+        // 1:00 PM Walk Reminder
+        if (hrs === 13 && mins === 0) {
+          triggerBrowserNotification("Dopahar Ki Walk 🚶", "Lunch se pehle ya baad 10 minute ki shatapavali walk karein!");
+        }
+        // 8:00 PM Dinner Reminder
+        if (hrs === 20 && mins === 0) {
+          triggerBrowserNotification("Halka Desi Dinner 🥗", "Raat ke 8 baj gaye hain. Low-GI light dinner karein taaki digestion sahi rahe.");
+        }
+      }, 60000);
+    }
+
+    function stopReminderInterval() {
+      if (reminderIntervalId) {
+        clearInterval(reminderIntervalId);
+        reminderIntervalId = null;
+      }
+    }
+
+    function triggerBrowserNotification(title, message) {
+      if (Notification.permission === 'granted') {
+        new Notification(`FitIndiaLife: ${title}`, {
+          body: message,
+          icon: "https://placehold.co/128x128/059669/ffffff?text=FitIndia"
+        });
+      }
+    }
+
+    /* =======================================================================
+       9. MODULE 1.1: WATER TRACKER LOGIC
+    ======================================================================= */
+    let currentWaterMl = 0;
+    const WATER_GOAL = 3000;
+    const GLASS_VOLUME = 250;
+    const TOTAL_GLASSES = 12;
+
+    function initWaterTracker() {
+      const savedWater = localStorage.getItem(STORAGE_WATER);
+      currentWaterMl = savedWater ? parseInt(savedWater, 10) : 0;
+      renderWaterUI();
+    }
+
+    function addWater(amount) {
+      currentWaterMl = Math.max(0, Math.min(6000, currentWaterMl + amount));
+      localStorage.setItem(STORAGE_WATER, currentWaterMl.toString());
+      renderWaterUI();
+    }
+
+    function resetWater() {
+      currentWaterMl = 0;
+      localStorage.setItem(STORAGE_WATER, '0');
+      renderWaterUI();
+    }
+
+    function renderWaterUI() {
+      document.getElementById('currentWaterText').textContent = currentWaterMl;
+      const pct = Math.min(100, Math.round((currentWaterMl / WATER_GOAL) * 100));
+      document.getElementById('waterPercentage').textContent = `${pct}%`;
+      document.getElementById('waterProgressBar').style.width = `${pct}%`;
+
+      const filledGlasses = Math.floor(currentWaterMl / GLASS_VOLUME);
+      document.getElementById('glassCountLabel').textContent = `${Math.min(TOTAL_GLASSES, filledGlasses)} / ${TOTAL_GLASSES} Glasses`;
+
+      const container = document.getElementById('glassesGrid');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= TOTAL_GLASSES; i++) {
+        const isFilled = i <= filledGlasses;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.onclick = () => {
+          currentWaterMl = i * GLASS_VOLUME;
+          localStorage.setItem(STORAGE_WATER, currentWaterMl.toString());
+          renderWaterUI();
+        };
+        btn.className = `p-2 rounded-xl border flex flex-col items-center justify-center transition ${
+          isFilled
+            ? 'bg-blue-500 border-blue-600 text-white shadow-sm active-glass'
+            : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-300 dark:text-slate-600 hover:border-blue-400'
+        }`;
+        btn.innerHTML = `
+          <i class="fa-solid fa-glass-water text-lg ${isFilled ? 'text-white' : 'text-slate-400'}"></i>
+          <span class="text-[9px] mt-1 font-bold">${i * 250}</span>
+        `;
+        container.appendChild(btn);
+      }
+    }
+
+    /* =======================================================================
+       10. MODULE 1.2: STEPS TRACKER LOGIC
+    ======================================================================= */
+    const STEP_GOAL = 10000;
+    function initStepsTracker() {
+      const savedSteps = localStorage.getItem(STORAGE_STEPS);
+      if (savedSteps) {
+        document.getElementById('stepsInput').value = savedSteps;
+        calculateStepMetrics(parseInt(savedSteps, 10));
+      } else {
+        calculateStepMetrics(0);
+      }
+    }
+
+    function updateSteps() {
+      const inputVal = parseInt(document.getElementById('stepsInput').value, 10) || 0;
+      localStorage.setItem(STORAGE_STEPS, inputVal.toString());
+      calculateStepMetrics(inputVal);
+    }
+
+    function calculateStepMetrics(steps) {
+      const km = (steps * 0.00075).toFixed(2);
+      const calories = Math.round(steps * 0.035);
+      const left = Math.max(0, STEP_GOAL - steps);
+
+      document.getElementById('stepsKm').textContent = `${km} km`;
+      document.getElementById('stepsCalories').textContent = `${calories} kcal`;
+      document.getElementById('stepsLeft').textContent = left.toLocaleString();
+
+      const statusBadge = document.getElementById('stepGoalStatus');
+      if (steps >= STEP_GOAL) {
+        statusBadge.textContent = '🎉 Goal Completed!';
+        statusBadge.className = 'text-xs font-extrabold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300';
+      } else {
+        statusBadge.textContent = `${Math.round((steps / STEP_GOAL) * 100)}% of 10k`;
+        statusBadge.className = 'text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300';
+      }
+    }
+
+    function syncStepsToLeaderboardModal() {
+      const steps = parseInt(document.getElementById('stepsInput').value, 10) || 0;
+      const leaderStepsInput = document.getElementById('leaderStepsInput');
+      leaderStepsInput.value = steps;
+      // Scroll smoothly to leaderboard
+      document.getElementById('leaderboard').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('leaderNameInput').focus();
+    }
+
+    /* =======================================================================
+       11. MODULE 1.3: ASIAN BMI CALCULATOR
+    ======================================================================= */
+    function setHeightUnit(unit) {
+      heightUnit = unit;
+      const btnCm = document.getElementById('unitCmBtn');
+      const btnFt = document.getElementById('unitFtBtn');
+      const cmGroup = document.getElementById('cmInputGroup');
+      const ftGroup = document.getElementById('ftInputGroup');
+
+      if (unit === 'cm') {
+        btnCm.className = 'px-2.5 py-1 rounded bg-white dark:bg-slate-700 text-brand-700 dark:text-brand-300 shadow-sm transition';
+        btnFt.className = 'px-2.5 py-1 rounded text-slate-600 dark:text-slate-400 transition';
+        cmGroup.classList.remove('hidden');
+        ftGroup.classList.add('hidden');
+        ftGroup.classList.remove('grid');
+      } else {
+        btnFt.className = 'px-2.5 py-1 rounded bg-white dark:bg-slate-700 text-brand-700 dark:text-brand-300 shadow-sm transition';
+        btnCm.className = 'px-2.5 py-1 rounded text-slate-600 dark:text-slate-400 transition';
+        cmGroup.classList.add('hidden');
+        ftGroup.classList.remove('hidden');
+        ftGroup.classList.add('grid');
+      }
+    }
+
+    function calculateBMI() {
+      let heightInMeters = 0;
+      if (heightUnit === 'cm') {
+        const cm = parseFloat(document.getElementById('heightCm').value);
+        if (!cm || cm <= 0) {
+          alertCustom("Kripya sahi height (cm) bharein!");
+          return;
+        }
+        heightInMeters = cm / 100;
+      } else {
+        const ft = parseFloat(document.getElementById('heightFt').value) || 0;
+        const inch = parseFloat(document.getElementById('heightIn').value) || 0;
+        const totalInches = (ft * 12) + inch;
+        if (totalInches <= 0) {
+          alertCustom("Kripya sahi feet aur inches bharein!");
+          return;
+        }
+        heightInMeters = totalInches * 0.0254;
+      }
+
+      const weight = parseFloat(document.getElementById('weightKg').value);
+      if (!weight || weight <= 0) {
+        alertCustom("Kripya sahi weight (kg) bharein!");
+        return;
+      }
+
+      const bmi = parseFloat((weight / (heightInMeters * heightInMeters)).toFixed(1));
+      
+      // Asian Cut-offs: Underweight <18.5, Normal 18.5-22.9, Overweight 23-24.9, Obese 25+
+      let category = '';
+      let badgeClass = '';
+      let advice = '';
+
+      if (bmi < 18.5) {
+        category = 'Underweight (<18.5)';
+        badgeClass = 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300';
+        advice = "Aapka vajan kam hai. Desi ghee, chane, soaked badam, kishmish aur paneer ko diet me badhayein muscle badhane ke liye.";
+      } else if (bmi >= 18.5 && bmi <= 22.9) {
+        category = 'Normal (18.5 - 22.9)';
+        badgeClass = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
+        advice = "Badhai ho! Asian standard ke anusaar aapka weight ekdum swasth hai. Rozana 10k kadam aur low-GI khana jari rakhein.";
+      } else if (bmi >= 23.0 && bmi <= 24.9) {
+        category = 'Overweight (23.0 - 24.9)';
+        badgeClass = 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+        advice = "Asian cut-off ke hisaab se thoda dhyan dene ki zaroorat hai. Gehun/chawal kam karein, dinner 8 PM se pehle lein aur meetha band karein.";
+      } else {
+        category = 'Obese (25.0+)';
+        badgeClass = 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300';
+        advice = "High metabolic risk. Visceral fat kam karne ke liye refined carbohydrates (maida, chini) bilkul rokein aur 45 minute walk shuru karein.";
+      }
+
+      // Calculate Ideal Weight Range for this height (BMI 18.5 to 22.9)
+      const minIdealWt = (18.5 * heightInMeters * heightInMeters).toFixed(1);
+      const maxIdealWt = (22.9 * heightInMeters * heightInMeters).toFixed(1);
+
+      document.getElementById('bmiScoreText').textContent = bmi;
+      const badge = document.getElementById('bmiBadge');
+      badge.textContent = category;
+      badge.className = `text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeClass}`;
+
+      document.getElementById('idealWeightRange').textContent = `Ideal: ${minIdealWt} - ${maxIdealWt} kg`;
+      document.getElementById('bmiDesiAdvice').textContent = advice;
+
+      // Save to History (Feature 7)
+      saveBmiHistoryRecord(bmi, weight);
+    }
+
+    /* =======================================================================
+       12. FEATURE 7: BMI HISTORY & CANVAS GRAPH
+    ======================================================================= */
+    let bmiHistory = [];
+
+    function initBmiHistoryAndChart() {
+      const saved = localStorage.getItem(STORAGE_BMI_HISTORY);
+      if (saved) {
+        try {
+          bmiHistory = JSON.parse(saved);
+        } catch (e) {
+          bmiHistory = [];
+        }
+      }
+      if (bmiHistory.length === 0) {
+        // Initial mock points to make visual graph look great immediately
+        bmiHistory = [
+          { date: "Oct 12", bmi: 25.4, weight: 75 },
+          { date: "Oct 19", bmi: 25.0, weight: 74 },
+          { date: "Oct 26", bmi: 24.6, weight: 73 },
+          { date: "Nov 02", bmi: 24.1, weight: 71.5 }
+        ];
+        localStorage.setItem(STORAGE_BMI_HISTORY, JSON.stringify(bmiHistory));
+      }
+      renderBmiHistoryList();
+      drawBmiCanvasChart();
+      window.addEventListener('resize', drawBmiCanvasChart);
+    }
+
+    function saveBmiHistoryRecord(bmi, weight) {
+      const now = new Date();
+      const dateStr = `${now.toLocaleString('default', { month: 'short' })} ${now.getDate()}`;
+      
+      bmiHistory.push({ date: dateStr, bmi: bmi, weight: weight });
+      if (bmiHistory.length > 10) {
+        bmiHistory.shift(); // Keep last 10 entries
+      }
+      localStorage.setItem(STORAGE_BMI_HISTORY, JSON.stringify(bmiHistory));
+      renderBmiHistoryList();
+      drawBmiCanvasChart();
+    }
+
+    function clearBmiHistory() {
+      bmiHistory = [];
+      localStorage.removeItem(STORAGE_BMI_HISTORY);
+      renderBmiHistoryList();
+      drawBmiCanvasChart();
+    }
+
+    function renderBmiHistoryList() {
+      const listContainer = document.getElementById('bmiHistoryList');
+      listContainer.innerHTML = '';
+
+      if (bmiHistory.length === 0) {
+        listContainer.innerHTML = '<p class="text-slate-400 italic py-2">Koi record nahi hai. Calculate karein!</p>';
+        return;
+      }
+
+      // Show in reverse chronological order
+      [...bmiHistory].reverse().forEach((item, idx) => {
+        const row = document.createElement('div');
+        row.className = 'p-2 bg-slate-50 dark:bg-slate-800 rounded-lg flex items-center justify-between border border-slate-200/60 dark:border-slate-700/60';
+        row.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-brand-100 dark:bg-brand-950 text-brand-700 dark:text-brand-300 text-[10px] flex items-center justify-center font-bold">${idx + 1}</span>
+            <span class="font-semibold text-slate-700 dark:text-slate-300">${item.date}</span>
+          </div>
+          <div class="text-right">
+            <span class="font-extrabold text-brand-600 dark:text-brand-400">${item.bmi} BMI</span>
+            <span class="text-[10px] text-slate-400 ml-1">(${item.weight} kg)</span>
+          </div>
+        `;
+        listContainer.appendChild(row);
+      });
+    }
+
+    function drawBmiCanvasChart() {
+      const canvas = document.getElementById('bmiChartCanvas');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      
+      // Match display size with internal resolution
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+
+      const width = rect.width;
+      const height = rect.height;
+
+      ctx.clearRect(0, 0, width, height);
+
+      if (bmiHistory.length === 0) {
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText('No BMI data recorded yet. Calculate to view graph.', width / 2, height / 2);
+        return;
+      }
+
+      const padding = { top: 25, bottom: 35, left: 40, right: 25 };
+      const chartWidth = width - padding.left - padding.right;
+      const chartHeight = height - padding.top - padding.bottom;
+
+      // Min/Max calculations
+      const values = bmiHistory.map(d => d.bmi);
+      let minVal = Math.min(...values, 18.0);
+      let maxVal = Math.max(...values, 28.0);
+      minVal = Math.floor(minVal - 1);
+      maxVal = Math.ceil(maxVal + 1);
+
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      const gridColor = isDarkMode ? 'rgba(51, 65, 85, 0.4)' : 'rgba(226, 232, 240, 0.8)';
+      const textColor = isDarkMode ? '#94a3b8' : '#64748b';
+
+      // Draw Normal Asian Target Zone (18.5 - 22.9)
+      const yNormTop = padding.top + chartHeight - ((22.9 - minVal) / (maxVal - minVal)) * chartHeight;
+      const yNormBottom = padding.top + chartHeight - ((18.5 - minVal) / (maxVal - minVal)) * chartHeight;
+      ctx.fillStyle = isDarkMode ? 'rgba(5, 150, 105, 0.12)' : 'rgba(16, 185, 129, 0.12)';
+      ctx.fillRect(padding.left, yNormTop, chartWidth, yNormBottom - yNormTop);
+
+      // Draw Grid Lines & Y labels
+      ctx.strokeStyle = gridColor;
+      ctx.fillStyle = textColor;
+      ctx.font = '10px Inter';
+      ctx.textAlign = 'right';
+      ctx.lineWidth = 1;
+
+      const stepsCount = 4;
+      for (let i = 0; i <= stepsCount; i++) {
+        const val = minVal + ((maxVal - minVal) / stepsCount) * i;
+        const y = padding.top + chartHeight - (i / stepsCount) * chartHeight;
+
+        ctx.beginPath();
+        ctx.moveTo(padding.left, y);
+        ctx.lineTo(width - padding.right, y);
+        ctx.stroke();
+
+        ctx.fillText(val.toFixed(1), padding.left - 8, y + 3);
+      }
+
+      // Plot Points
+      const points = bmiHistory.map((item, index) => {
+        const x = padding.left + (bmiHistory.length === 1 ? chartWidth / 2 : (index / (bmiHistory.length - 1)) * chartWidth);
+        const y = padding.top + chartHeight - ((item.bmi - minVal) / (maxVal - minVal)) * chartHeight;
+        return { x, y, val: item.bmi, date: item.date };
+      });
+
+      // Draw Gradient Line
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.strokeStyle = '#059669';
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Draw Dots and Values
+      points.forEach(pt => {
+        // Outer dot
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = '#059669';
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Label value on top of dot
+        ctx.fillStyle = isDarkMode ? '#f1f5f9' : '#0f172a';
+        ctx.font = 'bold 10px Inter';
+        ctx.textAlign = 'center';
+        ctx.fillText(pt.val.toString(), pt.x, pt.y - 9);
+
+        // Date Label below X axis
+        ctx.fillStyle = textColor;
+        ctx.font = '9px Inter';
+        ctx.fillText(pt.date, pt.x, height - 12);
+      });
+    }
+
+    /* =======================================================================
+       13. MODULE 1.4: BLOOD SUGAR LOG
+    ======================================================================= */
+    function analyzeBloodSugar() {
+      const fasting = parseFloat(document.getElementById('fastingSugar').value);
+      const postMeal = parseFloat(document.getElementById('postMealSugar').value);
+
+      if (!fasting && !postMeal) {
+        alertCustom("Kripya Fasting ya Post-Meal me se koi ek reading zaroor dalein!");
+        return;
+      }
+
+      let fastingStatus = '';
+      let fastingBadgeClass = '';
+      if (fasting) {
+        if (fasting < 100) {
+          fastingStatus = `Fasting: ${fasting} mg/dL (Normal)`;
+          fastingBadgeClass = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
+        } else if (fasting >= 100 && fasting <= 125) {
+          fastingStatus = `Fasting: ${fasting} mg/dL (Pre-Diabetic)`;
+          fastingBadgeClass = 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+        } else {
+          fastingStatus = `Fasting: ${fasting} mg/dL (High / Diabetic)`;
+          fastingBadgeClass = 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300';
+        }
+      }
+
+      let postStatus = '';
+      let postBadgeClass = '';
+      if (postMeal) {
+        if (postMeal < 140) {
+          postStatus = `Post-Meal: ${postMeal} mg/dL (Normal)`;
+          postBadgeClass = 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
+        } else if (postMeal >= 140 && postMeal <= 199) {
+          postStatus = `Post-Meal: ${postMeal} mg/dL (Pre-Diabetic)`;
+          postBadgeClass = 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+        } else {
+          postStatus = `Post-Meal: ${postMeal} mg/dL (High / Diabetic)`;
+          postBadgeClass = 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300';
+        }
+      }
+
+      const fBadge = document.getElementById('fastingBadge');
+      if (fasting) {
+        fBadge.textContent = fastingStatus;
+        fBadge.className = `text-xs font-bold px-2 py-0.5 rounded-full ${fastingBadgeClass}`;
+      }
+
+      const pBadge = document.getElementById('postMealBadge');
+      if (postMeal) {
+        pBadge.textContent = postStatus;
+        pBadge.className = `text-xs font-bold px-2 py-0.5 rounded-full ${postBadgeClass}`;
+      }
+
+      // Desi Advice based on severity
+      const adviceEl = document.getElementById('sugarDesiAdvice');
+      if ((fasting && fasting >= 126) || (postMeal && postMeal >= 200)) {
+        adviceEl.innerHTML = `<span class="text-rose-600 font-bold">Doctor Consultation Zaroori:</span> Sugar levels unche hain. Refined carbs (white rice, maida) turant rokein, methi daana paani lein aur apne physician se HbA1c test karwayein.`;
+      } else if ((fasting && fasting >= 100) || (postMeal && postMeal >= 140)) {
+        adviceEl.innerHTML = `<span class="text-amber-600 font-bold">Pre-Diabetes Alert:</span> Lifestyle sudhar se ye 100% reverse ho sakta hai. Rozana 45 min walk, salad pehle khana, aur 8 PM ke baad dinner band karein.`;
+      } else {
+        adviceEl.innerHTML = `<span class="text-emerald-600 font-bold">Normal Glycemic Range:</span> Shandar! Aapka sugar control behtareen hai. Low-GI desi diet continue rakhein.`;
+      }
+    }
+
+    /* =======================================================================
+       14. MODULE 2: MEAL PLAN RENDERING & SEARCH
+    ======================================================================= */
+    function renderMealPlanTable(data) {
+      const tbody = document.getElementById('mealTableBody');
+      tbody.innerHTML = '';
+
+      if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-slate-400">Aapki search se match hone wali koi dish nahi mili.</td></tr>`;
+        return;
+      }
+
+      data.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/40 transition';
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-slate-900 dark:text-white whitespace-nowrap bg-slate-50/50 dark:bg-slate-800/20">${item.day}</td>
+          <td class="py-3 px-4"><span class="font-medium text-slate-800 dark:text-slate-200">${item.breakfast}</span></td>
+          <td class="py-3 px-4"><span class="font-medium text-slate-800 dark:text-slate-200">${item.lunch}</span></td>
+          <td class="py-3 px-4"><span class="font-semibold text-amber-700 dark:text-amber-400">${item.snack}</span></td>
+          <td class="py-3 px-4"><span class="font-medium text-slate-800 dark:text-slate-200">${item.dinner}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterMealPlan() {
+      const term = document.getElementById('mealSearchInput').value.toLowerCase().trim();
+      const filtered = mealPlanData.filter(m => 
+        m.day.toLowerCase().includes(term) ||
+        m.breakfast.toLowerCase().includes(term) ||
+        m.lunch.toLowerCase().includes(term) ||
+        m.snack.toLowerCase().includes(term) ||
+        m.dinner.toLowerCase().includes(term)
+      );
+      renderMealPlanTable(filtered);
+    }
+
+    /* =======================================================================
+       15. FEATURE 9: LEADERBOARD LOGIC
+    ======================================================================= */
+    let leaderboardData = [];
+
+    function initLeaderboard() {
+      const saved = localStorage.getItem(STORAGE_LEADERBOARD);
+      if (saved) {
+        try {
+          leaderboardData = JSON.parse(saved);
+        } catch (e) {
+          leaderboardData = [];
+        }
+      }
+      if (leaderboardData.length === 0) {
+        // Mock desi Indian fitness enthusiasts
+        leaderboardData = [
+          { name: "Rahul Sharma", steps: 14200 },
+          { name: "Pooja Verma", steps: 12850 },
+          { name: "Amit Patel", steps: 11400 },
+          { name: "Sunita Roy", steps: 10200 },
+          { name: "Vikram Singh", steps: 8950 }
+        ];
+        localStorage.setItem(STORAGE_LEADERBOARD, JSON.stringify(leaderboardData));
+      }
+      renderLeaderboardUI();
+    }
+
+    function addLeaderboardEntry() {
+      const name = document.getElementById('leaderNameInput').value.trim();
+      const steps = parseInt(document.getElementById('leaderStepsInput').value, 10);
+
+      if (!name || isNaN(steps) || steps <= 0) {
+        alertCustom("Kripya apna naam aur valid steps count daalein!");
+        return;
+      }
+
+      leaderboardData.push({ name, steps });
+      // Sort descending
+      leaderboardData.sort((a, b) => b.steps - a.steps);
+      // Keep top 10
+      leaderboardData = leaderboardData.slice(0, 10);
+
+      localStorage.setItem(STORAGE_LEADERBOARD, JSON.stringify(leaderboardData));
+      renderLeaderboardUI();
+
+      // Clear input fields
+      document.getElementById('leaderNameInput').value = '';
+      document.getElementById('leaderStepsInput').value = '';
+    }
+
+    function renderLeaderboardUI() {
+      const container = document.getElementById('leaderboardContainer');
+      container.innerHTML = '';
+
+      const top5 = leaderboardData.slice(0, 5);
+      const medals = ['🥇 Gold', '🥈 Silver', '🥉 Bronze', '#4 Rank', '#5 Rank'];
+      const borderColors = [
+        'border-amber-400 bg-amber-50/50 dark:bg-amber-950/20',
+        'border-slate-300 bg-slate-50/60 dark:bg-slate-800/40',
+        'border-amber-600 bg-amber-50/30 dark:bg-amber-950/10',
+        'border-slate-200 bg-white dark:bg-slate-900',
+        'border-slate-200 bg-white dark:bg-slate-900'
+      ];
+
+      top5.forEach((item, index) => {
+        const km = (item.steps * 0.00075).toFixed(1);
+        const card = document.createElement('div');
+        card.className = `rounded-2xl p-4 border ${borderColors[index]} card-shadow flex flex-col justify-between`;
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400">${medals[index]}</span>
+              <span class="text-[10px] text-slate-400">${km} km</span>
+            </div>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 mt-2 truncate">${item.name}</h4>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-baseline justify-between">
+            <span class="text-[11px] text-slate-500">Steps:</span>
+            <span class="text-base font-extrabold text-brand-600 dark:text-brand-400">${item.steps.toLocaleString()}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* =======================================================================
+       16. FEATURE 10: BEFORE / AFTER PHOTO & WEIGHT TRACKER
+    ======================================================================= */
+    function initTransformationTracker() {
+      const beforeImg = localStorage.getItem(STORAGE_BEFORE_IMG);
+      const afterImg = localStorage.getItem(STORAGE_AFTER_IMG);
+      const beforeWt = localStorage.getItem(STORAGE_BEFORE_WEIGHT);
+      const afterWt = localStorage.getItem(STORAGE_AFTER_WEIGHT);
+
+      if (beforeImg) {
+        document.getElementById('beforeImgPreview').src = beforeImg;
+        document.getElementById('beforeImgPreview').classList.remove('hidden');
+        document.getElementById('beforePlaceholder').classList.add('hidden');
+      }
+      if (afterImg) {
+        document.getElementById('afterImgPreview').src = afterImg;
+        document.getElementById('afterImgPreview').classList.remove('hidden');
+        document.getElementById('afterPlaceholder').classList.add('hidden');
+      }
+      if (beforeWt) document.getElementById('beforeWeightInput').value = beforeWt;
+      if (afterWt) document.getElementById('afterWeightInput').value = afterWt;
+
+      updateWeightDelta();
+    }
+
+    function handlePhotoUpload(event, type) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (file.size > 2 * 1024 * 1024) {
+        alertCustom("Photo 2MB se chhoti honi chahiye local storage ke liye.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Data = e.target.result;
+        if (type === 'before') {
+          localStorage.setItem(STORAGE_BEFORE_IMG, base64Data);
+          document.getElementById('beforeImgPreview').src = base64Data;
+          document.getElementById('beforeImgPreview').classList.remove('hidden');
+          document.getElementById('beforePlaceholder').classList.add('hidden');
+        } else {
+          localStorage.setItem(STORAGE_AFTER_IMG, base64Data);
+          document.getElementById('afterImgPreview').src = base64Data;
+          document.getElementById('afterImgPreview').classList.remove('hidden');
+          document.getElementById('afterPlaceholder').classList.add('hidden');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function savePhotoMeta() {
+      const beforeWt = document.getElementById('beforeWeightInput').value;
+      const afterWt = document.getElementById('afterWeightInput').value;
+      if (beforeWt) localStorage.setItem(STORAGE_BEFORE_WEIGHT, beforeWt);
+      if (afterWt) localStorage.setItem(STORAGE_AFTER_WEIGHT, afterWt);
+      updateWeightDelta();
+    }
+
+    function updateWeightDelta() {
+      const b = parseFloat(document.getElementById('beforeWeightInput').value);
+      const a = parseFloat(document.getElementById('afterWeightInput').value);
+      const badge = document.getElementById('weightDeltaBadge');
+
+      if (!isNaN(b) && !isNaN(a)) {
+        const delta = (b - a).toFixed(1);
+        if (delta > 0) {
+          badge.textContent = `-${delta} kg Weight Loss! 👏`;
+          badge.className = 'text-brand-600 dark:text-brand-400 font-extrabold text-base';
+        } else if (delta < 0) {
+          badge.textContent = `+${Math.abs(delta)} kg Muscle/Weight Gain! 💪`;
+          badge.className = 'text-teal-600 dark:text-teal-400 font-extrabold text-base';
+        } else {
+          badge.textContent = `Weight Maintained (0 kg delta)`;
+          badge.className = 'text-slate-600 font-extrabold text-base';
+        }
+      } else {
+        badge.textContent = 'Enter weights above';
+      }
+    }
+
+    function shareTransformationWhatsApp() {
+      const b = document.getElementById('beforeWeightInput').value || 'X';
+      const a = document.getElementById('afterWeightInput').value || 'Y';
+      const text = encodeURIComponent(`Maine FitIndiaLife.in par apni fitness journey track ki! Starting Weight: ${b} kg, Current Weight: ${a} kg. Desi diet aur consistency kaam aati hai! 💪🌿 https://fitindialife.in`);
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+
+    function clearTransformation() {
+      localStorage.removeItem(STORAGE_BEFORE_IMG);
+      localStorage.removeItem(STORAGE_AFTER_IMG);
+      localStorage.removeItem(STORAGE_BEFORE_WEIGHT);
+      localStorage.removeItem(STORAGE_AFTER_WEIGHT);
+
+      document.getElementById('beforeImgPreview').src = '';
+      document.getElementById('beforeImgPreview').classList.add('hidden');
+      document.getElementById('beforePlaceholder').classList.remove('hidden');
+
+      document.getElementById('afterImgPreview').src = '';
+      document.getElementById('afterImgPreview').classList.add('hidden');
+      document.getElementById('afterPlaceholder').classList.remove('hidden');
+
+      document.getElementById('beforeWeightInput').value = '';
+      document.getElementById('afterWeightInput').value = '';
+      updateWeightDelta();
+    }
+
+    /* =======================================================================
+       17. FEATURE 11: FLOATING AI HEALTH CHATBOT
+    ======================================================================= */
+    function toggleChatbot() {
+      const win = document.getElementById('chatbotWindow');
+      win.classList.toggle('hidden');
+      if (!win.classList.contains('hidden')) {
+        document.getElementById('chatInput').focus();
+      }
+    }
+
+    function sendQuickPrompt(promptText) {
+      document.getElementById('chatInput').value = promptText;
+      processChatMessage(promptText);
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const val = input.value.trim();
+      if (!val) return;
+      processChatMessage(val);
+      input.value = '';
+    }
+
+    function processChatMessage(userMsg) {
+      const chatMessages = document.getElementById('chatMessages');
+
+      // Append User Bubble
+      const userBubble = document.createElement('div');
+      userBubble.className = 'flex items-start justify-end gap-2';
+      userBubble.innerHTML = `
+        <div class="bg-brand-600 text-white p-3 rounded-2xl rounded-tr-sm shadow-sm max-w-[85%] text-xs">
+          <p>${escapeHtml(userMsg)}</p>
+        </div>
+        <div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 flex items-center justify-center text-[10px] shrink-0 mt-0.5">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      `;
+      chatMessages.appendChild(userBubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      // Bot Thinking Simulation
+      setTimeout(() => {
+        const botResponse = generateDesiAiResponse(userMsg.toLowerCase());
+        const botBubble = document.createElement('div');
+        botBubble.className = 'flex items-start gap-2';
+        botBubble.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-brand-600 text-white flex items-center justify-center text-[10px] shrink-0 mt-0.5">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 p-3 rounded-2xl rounded-tl-sm text-slate-800 dark:text-slate-100 shadow-sm max-w-[85%] text-xs">
+            ${botResponse}
+            <p class="text-[9px] text-slate-400 mt-2 italic pt-1 border-t border-slate-100 dark:border-slate-700">Ye AI general jankari deta hai, doctor ki salah nahi hai.</p>
+          </div>
+        `;
+        chatMessages.appendChild(botBubble);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
+    }
+
+    function generateDesiAiResponse(query) {
+      if (query.includes('sugar') || query.includes('diabetes')) {
+        return `<strong>🍬 Diabetes & Sugar Control Desi Nuskhe:</strong><br><br>
+        <strong>Kya Khayein:</strong> Methi daana paani, karela/jamun juice, ragi aur jowar ki roti, palak-paneer, daal ka paani aur kacha salad.<br><br>
+        <strong>Kya Band Karein:</strong> Maida, safed chawal, cold drinks, meethai aur packed biscuits.<br><br>
+        <strong>Golden Tip:</strong> Har meal se 10 min pehle salad khayein taaki sugar spike 40% tak dab sake.`;
+      } else if (query.includes('weight') || query.includes('vajan') || query.includes('fat') || query.includes('motapa')) {
+        return `<strong>⚖️ Weight Loss Desi Formula:</strong><br><br>
+        1. <strong>Calorie Deficit + High Protein:</strong> Katori bhar sprouts, paneer ya besan chilla nashte me lein.<br>
+        2. <strong>Early Dinner:</strong> Raat ka khana sham 8 baje se pehle khatam karein.<br>
+        3. <strong>10,000 Steps:</strong> Rozana shatapavali aur brisk walk karein. 3000ml paani zaroor piyein.`;
+      } else if (query.includes('bp') || query.includes('blood pressure') || query.includes('hypertension')) {
+        return `<strong>🩺 High BP Control Tips:</strong><br><br>
+        1. <strong>Namak (Sodium) Control:</strong> Papad, achaar aur packaged namkeen bilkul avoid karein.<br>
+        2. <strong>Potassium Foods:</strong> Nariyal paani, kela, tamatar aur dahi BP naturally balance karte hain.<br>
+        3. Omron machine se subah khaali pet aur sham ko BP note karein.`;
+      } else if (query.includes('nashta') || query.includes('breakfast')) {
+        return `<strong>🥣 Healthy Desi Breakfast Options:</strong><br><br>
+        • <strong>Moong Dal Cheela</strong> with mint chutney & paneer filling.<br>
+        • <strong>Vegetable Oats / Dalia</strong> with roasted peanuts & curry leaves.<br>
+        • <strong>Sprouted Chana Chaat</strong> with chopped tomatoes & lemon.<br>
+        *Note:* Chai me shakkar na daalein ya kam karein!`;
+      } else if (query.includes('pani') || query.includes('water')) {
+        return `<strong>💧 Paani Pine Ka Sahi Tarika:</strong><br><br>
+        • Din bhar me kam se kam <strong>3,000 ml (10-12 glass)</strong> paani piyein.<br>
+        • Hamesha <strong>baith kar ghoont-ghoont</strong> karke piyein (standing drinking stresses joints).<br>
+        • Khane ke turant baad chilled paani na piyein; digestive fire (jatharagni) weak hoti hai.`;
+      } else {
+        return `<strong>Desi Health Guidance:</strong><br><br>
+        Aapne pucha: <em>"${escapeHtml(query)}"</em>.<br>
+        Desi lifestyle ka mool mantra hai: <strong>Khaana natural ho, namak-cheeni kam ho, aur din me 10,000 kadam chalna na choote.</strong><br>
+        Aap hamara 7-Day Low GI diet plan aur Asian BMI calculator check kar sakte hain!`;
+      }
+    }
+
+    /* =======================================================================
+       18. MODULE 4: DOWNLOADS & NEWSLETTER FORM
+    ======================================================================= */
+    function handleDownloadSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('subscriberName').value;
+      const fb = document.getElementById('downloadFeedback');
+      fb.classList.remove('hidden');
+      fb.textContent = `🎉 Dhanyawad ${name} ji! Aapka 30-Day Health Tracker & Grocery Checklist download ho raha hai.`;
+
+      // Simulate client PDF download trigger
+      const dummyContent = `FIT INDIA LIFE - 30 DAY HEALTH & HABIT TRACKER\nOwner: ${name}\nGoal: 10,000 Steps & 3000ml Water Daily\nDiet: Low-GI Indian Staples (Ragi, Dal, Sprouts)\nVisit: https://fitindialife.in`;
+      const blob = new Blob([dummyContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `FitIndiaLife_30Day_Tracker_${name.replace(/\s+/g, '_')}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    /* =======================================================================
+       19. UTILITY HELPERS
+    ======================================================================= */
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+    document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+    function alertCustom(msg) {
+      // Non-blocking in-app toast message replacement for alert()
+      const toast = document.createElement('div');
+      toast.className = 'fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-semibold flex items-center gap-2 border border-slate-700 animate-bounce';
+      toast.innerHTML = `<i class="fa-solid fa-circle-info text-brand-400"></i> <span>${msg}</span>`;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+
+    function escapeHtml(string) {
+      return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>
+```
